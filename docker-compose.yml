@@ -1,0 +1,7 @@
+version: '2'
+services:
+  demo:
+    build: .
+    image: alantrrs/py-faster-rcnn
+    volumes:
+      - ./data/:/home/py-faster-rcnn/data

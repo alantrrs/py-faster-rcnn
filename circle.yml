@@ -1,0 +1,15 @@
+machine:
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+  services:
+    - docker
+dependencies:
+  override: 
+    - curl -L https://github.com/docker/compose/releases/download/1.7.0/docker-compose-`uname -s`-`uname -m` > $(pwd)/docker-compose
+    - chmod +x ./docker-compose
+    - docker build -t alantrrs/py-faster-rcnn .
+test:
+  override:
+    - ./data/scripts/fetch_faster_rcnn_models.sh
+    - ./docker-compose run demo tools/demo.py --cpu
+
