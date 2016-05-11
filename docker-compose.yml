@@ -3,7 +3,10 @@ services:
   demo:
     build: .
     image: alantrrs/py-faster-rcnn
+    environment:
+      - DISPLAY=$DISPLAY
     volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
       - ./data/:/home/py-faster-rcnn/data
     devices:
       - /dev/nvidia0
@@ -11,6 +14,9 @@ services:
       - /dev/nvidia-uvm
   dev:
     image: alantrrs/py-faster-rcnn
+    environment:
+      - DISPLAY=$DISPLAY
     volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
       - .:/home/py-faster-rcnn
 
