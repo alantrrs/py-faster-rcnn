@@ -9,3 +9,8 @@ services:
       - /dev/nvidia0
       - /dev/nvidiactl
       - /dev/nvidia-uvm
+  dev:
+    image: alantrrs/py-faster-rcnn
+    volumes:
+      - .:/home/py-faster-rcnn
+
