@@ -37,7 +37,7 @@ NETS = {'vgg16': ('VGG16',
                   'ZF_faster_rcnn_final.caffemodel')}
 
 
-def vis_detections(im, class_name, dets, thresh=0.5):
+def vis_detections(im, image_name, class_name, dets, thresh=0.5):
     """Draw detected bounding boxes."""
     inds = np.where(dets[:, -1] >= thresh)[0]
     if len(inds) == 0:
@@ -68,7 +68,7 @@ def vis_detections(im, class_name, dets, thresh=0.5):
     plt.axis('off')
     plt.tight_layout()
     plt.draw()
-    plt.savefig(class_name + '.jpg', format='jpg')
+    plt.savefig(class_name + '_' + image_name, format='jpg')
 
 def demo(net, image_name):
     """Detect object classes in an image using pre-computed object proposals."""
@@ -96,7 +96,7 @@ def demo(net, image_name):
                           cls_scores[:, np.newaxis])).astype(np.float32)
         keep = nms(dets, NMS_THRESH)
         dets = dets[keep, :]
-        vis_detections(im, cls, dets, thresh=CONF_THRESH)
+        vis_detections(im, image_name, cls, dets, thresh=CONF_THRESH)
 
 def parse_args():
     """Parse input arguments."""
