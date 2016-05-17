@@ -11,6 +11,5 @@ dependencies:
 test:
   override:
     - ./data/scripts/fetch_faster_rcnn_models.sh
-    - ./docker-compose run demo tools/demo.py --cpu --net zf
-    - mv *.jpg $CIRCLE_ARTIFACTS
+    - ./docker-compose run circle
 
