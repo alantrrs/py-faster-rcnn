@@ -12,4 +12,5 @@ test:
   override:
     - ./data/scripts/fetch_faster_rcnn_models.sh
     - ./docker-compose run demo tools/demo.py --cpu
+    - mv *.jpg $CIRCLE_ARTIFACTS
 
