@@ -5,3 +5,7 @@ services:
     image: alantrrs/py-faster-rcnn
     volumes:
       - ./data/:/home/py-faster-rcnn/data
+    devices:
+      - /dev/nvidia0
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
