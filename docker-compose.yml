@@ -16,6 +16,8 @@ services:
       - /dev/nvidia0
       - /dev/nvidiactl
       - /dev/nvidia-uvm
+    volumes:
+      - ~/data/VOCdevkit2007:/home/py-faster-rcnn/data/VOCdevkit2007/
   circle:
     command: python tools/demo.py --cpu --net zf
     extends:
